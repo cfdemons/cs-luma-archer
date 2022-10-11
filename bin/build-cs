@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -eu
 
 # Parse arguments
 srcdir="$1"
@@ -48,6 +48,7 @@ echo "Compiling code_saturne in $builddir"
                    --without-cgns \
                    --without-med \
                    --without-scotch \
+                   --with-metis="$METIS_DIR" \
                    PYTHON=$PYTHON \
                    --disable-static \
                    --enable-debug \
@@ -56,8 +57,6 @@ echo "Compiling code_saturne in $builddir"
                    FC=$MPIF90 \
                    CFLAGS="-g" \
                    LDFLAGS="-g"
-
-#                   --with-metis="$METIS_INSTALL_DIR" \
 
     make clean
 
