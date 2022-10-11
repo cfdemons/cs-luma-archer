@@ -3,4 +3,4 @@
 	url = ../code_saturne.git
 [submodule "components/LUMA"]
 	path = components/LUMA
-	url = ssh://git@github.com/cfdemons/LUMAPrivate
+	url = ../LUMAPrivate
