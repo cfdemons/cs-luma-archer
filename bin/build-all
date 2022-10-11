@@ -8,8 +8,8 @@ builddir=$PWD/var/build
 export METIS_DIR=$destdir/metis
 export CODE_SATURNE_DIR=$destdir/Code_Saturne
 
-# bin/build-metis "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz" $builddir/metis $METIS_DIR
+bin/build-metis "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz" $builddir/metis $METIS_DIR
 
-# bin/build-cs $PWD/components/code_saturne $builddir/code_saturne $CODE_SATURNE_DIR
+bin/build-cs $PWD/components/code_saturne $builddir/code_saturne $CODE_SATURNE_DIR
 
 bin/install-luma $PWD/components/LUMA $destdir/LUMA
