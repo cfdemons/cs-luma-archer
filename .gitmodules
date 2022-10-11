@@ -1,0 +1,6 @@
+[submodule "components/code_saturne"]
+	path = components/code_saturne
+	url = ../code_saturne.git
+[submodule "components/LUMA"]
+	path = components/LUMA
+	url = ../LUMA.git
