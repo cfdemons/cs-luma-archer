@@ -2,6 +2,8 @@
 
 This tutorial will guide you through setting up a 2D lid-driven cavity simulation run using Code_Saturne coupled to LUMA in a unit cube domain.  LUMA will evolve the portion x <= 0.55, and Code_Saturne will evolve the portion x <= 0.45.  The boundary x=0 is driven with a velocity $v_y = 1$.  Boundary data at the coupling boundaries is obtained from the other code using the PLE library.
 
+## Set up the case
+
 Code_Saturne, with modifications to support coupling with LUMA, is installed in 
 
 ````bash
@@ -35,13 +37,13 @@ The case definition looks like this:
 ```
 ldc_left_right
 ├── LEFT
-│   └── definitions.h
+│   └── definitions.h
 ├── RIGHT
-│   ├── DATA
-│   │   └── setup.xml
-│   ├── SRC
-│   │   └── cs_user_coupling.c
-│   └── cs_user_physical_properties.f90
+│   ├── DATA
+│   │   └── setup.xml
+│   ├── SRC
+│   │   └── cs_user_coupling.c
+│   └── cs_user_physical_properties.f90
 └── run.cfg
 
 ```
@@ -66,6 +68,8 @@ cp -a $case_dir .
 
 At this point, you could customise the case by editing the configuration files, but for this tutorial, we will run the case as-is.
 
+## Compile LUMA for this case
+
 Next, compile LUMA using the definitions.h file from the case definition:
 
 ```
@@ -81,6 +85,8 @@ cd ../..
 
 - ==In the "installed" version of LUMA, omit definitions.h entirely, so it can be overridden by an extra -I flag, maybe in CFLAGS, or with a custom variable.==
 - ==Also provide a make config file which specifies all the above for Archer and the CS coupling, so the user doesn't need to provide it.==
+
+## Submit the case
 
 Write a batch script to run the case:
 
@@ -125,6 +131,8 @@ RESU_COUPLING/*/RIGHT/run_solver.log
 
 The simulation should take about 25 minutes to complete.
 
+## Visualise with ParaView
+
 The 3D LUMA field data will be in
 
 ```
@@ -153,5 +161,4 @@ The LUMA data will need to be rescaled by a factor of 0.005/0.001 to convert fro
 
 The LUMA data will need timestep information added, to ensure it is in sync with the Code_Saturne data.
 
-You should obtain the following plot.
 
