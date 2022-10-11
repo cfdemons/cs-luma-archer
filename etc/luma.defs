@@ -1,0 +1,4 @@
+CC = CC
+CFLAGS_EXTRAS = -std=c++11 -g
+LAPACK_LIBS = -lsci_gnu
+HDF5_HOME = /opt/cray/pe/hdf5-parallel/1.12.0.3/crayclang/9.1
