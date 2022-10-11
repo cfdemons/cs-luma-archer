@@ -1,0 +1,71 @@
+#!/bin/bash
+
+set -e
+
+# Parse arguments
+srcdir="$1"
+builddir="$2"
+destdir="$3"
+
+# Set up environment for ARCHER2
+PYTHON=/opt/cray/pe/python/3.8.5.0/bin/python
+MPICXX=CC
+MPICC=cc
+MPIF90=ftn
+
+module purge
+module load PrgEnv-gnu
+module load cray-python/3.8.5.0
+
+# Build and install
+
+csbuilddir=$(readlink -f "$builddir")
+
+echo "Copying Code_Saturne source from $srcdir to $builddir"
+mkdir -p "${csbuilddir}"
+rsync -a "$srcdir/" "${csbuilddir}"
+
+echo "Bootstrapping code_saturne"
+(
+    cd "${csbuilddir}"
+    ./sbin/bootstrap
+)
+
+mkdir -p "$destdir"
+
+echo "Compiling code_saturne in $builddir"
+(
+    cd "${csbuilddir}"
+    export MAKEFLAGS=--jobs=8
+
+    mkdir -p code_saturne.build
+    cd code_saturne.build
+
+    "${csbuilddir}"/configure \
+                   --prefix="$destdir" \
+                   --disable-gui \
+                   --without-hdf5 \
+                   --without-cgns \
+                   --without-med \
+                   --without-scotch \
+                   PYTHON=$PYTHON \
+                   --disable-static \
+                   --enable-debug \
+                   CXX=$MPICXX \
+                   CC=$MPICC \
+                   FC=$MPIF90 \
+                   CFLAGS="-g" \
+                   LDFLAGS="-g"
+
+#                   --with-metis="$METIS_INSTALL_DIR" \
+
+    make clean
+
+    make -j 28
+
+    echo "Installing Code_Saturne to $destdir"
+    make install
+)
+
+echo "Copying code_saturne.cfg to $destdir/etc/code_saturne.cfg"
+cp etc/code_saturne/code_saturne.cfg $destdir/etc/code_saturne.cfg
