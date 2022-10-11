@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -eu
+
+# Parse arguments
+url="$1"
+builddir="$2"
+destdir="$3"
+
+# Set up environment for ARCHER2
+module purge
+module load PrgEnv-gnu
+module load cray-python/3.8.5.0
+
+basedir=$PWD
+
+mkdir -p $builddir
+cd $builddir
+wget --no-clobber "$url"
+archivename=${url##*/}
+tar xfz "$archivename"
+packagename=${archivename%.tar.gz}
+cd "$packagename"
+sed -i.bak 's/#define IDXTYPEWIDTH.*/#define IDXTYPEWIDTH 64/' include/metis.h
+sed -i 's/#define REALTYPEWIDTH.*/#define REALTYPEWIDTH 64/' include/metis.h
+make config prefix=$destdir
+make install
