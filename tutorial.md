@@ -69,11 +69,6 @@ cd ldc_left_right
 build-luma LEFT/definitions.h $LUMA_DIR/etc/luma.defs LEFT/LUMA CS_INSTALL=$CODE_SATURNE_DIR
 ```
 
-==**TODO: **==
-
-- ==In the "installed" version of LUMA, omit definitions.h entirely, so it can be overridden by an extra -I flag, maybe in CFLAGS, or with a custom variable.==
-- ==Also provide a make config file which specifies all the above for Archer and the CS coupling, so the user doesn't need to provide it.==
-
 ## Submit the case
 
 Write a batch script to run the case:
