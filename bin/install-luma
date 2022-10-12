@@ -6,3 +6,7 @@ destdir="$2"
 
 # Copy LUMA source
 rsync -a --exclude input --exclude testsuite --exclude docs --exclude tools --exclude scripts --exclude definitions.h --prune-empty-dirs --delete-excluded --delete $srcdir/LUMA/ $destdir
+
+# Copy LUMA configuration definitions
+
+rsync -a etc/luma.defs $destdir/etc/
