@@ -55,6 +55,9 @@ rsync -a cases/ $destdir/cases/
 # Setup script (TODO: maybe make into a module?)
 
 cat >$destdir/setup.sh <<EOF
+module load PrgEnv-gnu
+module load cray-python/3.8.5.0
+
 export CS_LUMA_DIR=$destdir
 export CODE_SATURNE_DIR=$CODE_SATURNE_DIR
 export LUMA_DIR=$LUMA_DIR

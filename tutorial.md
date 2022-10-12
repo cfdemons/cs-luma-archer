@@ -11,10 +11,6 @@ definition, are installed on ARCHER2.
 Set up your environment to give access to the software:
 ```bash
 module purge
-
-module load PrgEnv-gnu
-module load cray-python/3.8.5.0
-
 source /work/ecseaa28/shared/software/cs-luma-1.0.0-alpha.1-3-g592816a/setup.sh
 ```
 
@@ -83,10 +79,6 @@ Write a batch script to run the case:
 set -eu
 
 module purge
-
-module load PrgEnv-gnu
-module load cray-python/3.8.5.0
-
 source /work/ecseaa28/shared/software/cs-luma-1.0.0-alpha.1-3-g592816a/setup.sh
 
 code_saturne run
