@@ -11,15 +11,18 @@ if [[ "$csluma_version" =~ dirty && $releasemode != dev ]]; then
     exit 1
 fi
 csluma_version=$(git describe --tags)
+csluma_version=${csluma_version:1} # strip leading v
 
 destdir=/work/ecseaa28/shared/software/cs-luma-${csluma_version}
 builddir=$PWD/var/build
+
+mkdir -p $destdir
 
 # METIS
 
 metis_version=5.1.0
 export METIS_DIR=$destdir/metis-${metis_version}
-#bin/build-metis "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-${metis_version}.tar.gz" $builddir/metis $METIS_DIR
+bin/build-metis "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-${metis_version}.tar.gz" $builddir/metis $METIS_DIR
 
 # Code_Saturne
 
@@ -42,7 +45,18 @@ if [[ "$luma_version" =~ dirty && $releasemode != dev ]]; then
 fi
 luma_version=$(git --git-dir components/LUMA/.git --work-tree components/LUMA describe --tags)
 luma_version=${luma_version/Release_v/}
+LUMA_DIR=$destdir/LUMA-${luma_version}
+bin/install-luma $PWD/components/LUMA $LUMA_DIR
 
-bin/install-luma $PWD/components/LUMA $destdir/LUMA-${luma_version}
+# Case definitions
 
 rsync -a cases/ $destdir/cases/
+
+# Setup script (TODO: maybe make into a module?)
+
+cat >$destdir/setup.sh <<EOF
+export CS_LUMA_DIR=$destdir
+export CODE_SATURNE_DIR=$CODE_SATURNE_DIR
+export LUMA_DIR=$LUMA_DIR
+export PATH=\$LUMA_DIR/bin:\$CODE_SATURNE_DIR/bin:\$PATH
+EOF
