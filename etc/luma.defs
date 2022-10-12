@@ -1,3 +1,6 @@
+
+# LUMA makefile definitions for ARCHER2
+
 CC = CC
 CFLAGS_EXTRAS = -std=c++11 -g
 LAPACK_LIBS = -lsci_gnu
