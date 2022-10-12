@@ -66,7 +66,7 @@ Next, compile a LUMA executable `LEFT/LUMA` using `LEFT/definitions.h`:
 
 ```
 cd ldc_left_right
-build-luma LEFT/definitions.h $LUMA_DIR/etc/luma.defs LEFT/LUMA CS_INSTALL=$CODE_SATURNE_DIR
+build-luma LEFT/definitions.h LEFT/LUMA CS_INSTALL=$CODE_SATURNE_DIR
 ```
 
 ## Submit the case
