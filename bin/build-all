@@ -2,16 +2,47 @@
 
 set -eu
 
-destdir=/work/ecseaa28/ecseaa28/hinderec/staging/cs-luma
+# Set release mode to 'dev' or 'release'
+releasemode=dev
+
+csluma_version=$(git describe --tags --dirty)
+if [[ "$csluma_version" =~ dirty && $releasemode != dev ]]; then
+    echo "Cannot build a release version with a dirty cs-luma-archer repository" >&2
+    exit 1
+fi
+csluma_version=$(git describe --tags)
+
+destdir=/work/ecseaa28/shared/software/cs-luma-${csluma_version}
 builddir=$PWD/var/build
 
-export METIS_DIR=$destdir/metis
-export CODE_SATURNE_DIR=$destdir/Code_Saturne
+# METIS
 
-bin/build-metis "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz" $builddir/metis $METIS_DIR
+metis_version=5.1.0
+export METIS_DIR=$destdir/metis-${metis_version}
+#bin/build-metis "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-${metis_version}.tar.gz" $builddir/metis $METIS_DIR
 
+# Code_Saturne
+
+cs_version=$(git --git-dir components/code_saturne/.git --work-tree components/code_saturne describe --tags --dirty)
+cs_version=$(git --git-dir components/code_saturne/.git --work-tree components/code_saturne describe --tags)
+if [[ "$cs_version" =~ dirty && $releasemode != dev ]]; then
+    echo "Cannot build a release version with a dirty Code_Saturne repository" >&2
+    exit 1
+fi
+cs_version=${cs_version:1} # strip leading v
+export CODE_SATURNE_DIR=$destdir/Code_Saturne-${cs_version}
 bin/build-cs $PWD/components/code_saturne $builddir/code_saturne $CODE_SATURNE_DIR
 
-bin/install-luma $PWD/components/LUMA $destdir/LUMA
+# LUMA
+
+luma_version=$(git --git-dir components/LUMA/.git --work-tree components/LUMA describe --tags --dirty)
+if [[ "$luma_version" =~ dirty && $releasemode != dev ]]; then
+    echo "Cannot build a release version with a dirty LUMA repository" >&2
+    exit 1
+fi
+luma_version=$(git --git-dir components/LUMA/.git --work-tree components/LUMA describe --tags)
+luma_version=${luma_version/Release_v/}
+
+bin/install-luma $PWD/components/LUMA $destdir/LUMA-${luma_version}
 
 rsync -a cases/ $destdir/cases/
