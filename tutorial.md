@@ -11,7 +11,7 @@ definition, are installed on ARCHER2.
 Set up your environment to give access to the software:
 ```bash
 module purge
-source /work/ecseaa28/shared/software/cs-luma-1.0.0-alpha.1-3-g592816a/setup.sh
+source /work/ecseaa28/shared/software/cs-luma-1.0.0-alpha.2/setup.sh
 ```
 
 Note that while the installed version of Code_Saturne can be used directly, LUMA must be compiled for each case you want to run, as the case parameters are configured through its definitions.h header file.
@@ -79,7 +79,7 @@ Write a batch script to run the case:
 set -eu
 
 module purge
-source /work/ecseaa28/shared/software/cs-luma-1.0.0-alpha.1-3-g592816a/setup.sh
+source /work/ecseaa28/shared/software/cs-luma-1.0.0-alpha.2/setup.sh
 
 code_saturne run
 ```
