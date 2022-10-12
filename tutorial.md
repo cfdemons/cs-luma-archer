@@ -4,27 +4,21 @@ This tutorial will guide you through setting up a 2D lid-driven cavity simulatio
 
 ## Set up the case
 
-Code_Saturne, with modifications to support coupling with LUMA, is installed in 
+Versions of Code_Saturne and LUMA which include support for coupling
+between them, as well as the example lid-driven cavity case
+definition, are installed on ARCHER2.
 
-````bash
-export CODE_SATURNE_DIR=/work/ecseaa28/ecseaa28/hinderec/projects/cs-luma/software/Code_Saturne/7.0.2/code_saturne-7.0.2/arch/Linux_x86_64
-````
-
-LUMA, also with the coupling modifications, is installed in
-
- ````bash
- luma_dir=/work/ecseaa28/ecseaa28/hinderec/projects/cs-luma/components/LUMA/LUMA
- ````
-
-The lid-driven cavity coupled case definition is available at 
-
+Set up some variables to conveniently refer to these locations:
 ```bash
-case_dir=/work/ecseaa28/ecseaa28/hinderec/projects/cs-luma/cases/tutorial/ldc_left_right
+export CS_LUMA_DIR=/work/ecseaa28/ecseaa28/hinderec/staging/cs-luma
+export CODE_SATURNE_DIR=$CS_LUMA_DIR/Code_Saturne
+export LUMA_DIR=$CS_LUMA_DIR/LUMA
+export PATH=$LUMA_DIR/bin:$CODE_SATURNE_DIR/bin:$PATH
 ```
 
 Note that while the installed version of Code_Saturne can be used directly, LUMA must be compiled for each case you want to run, as the case parameters are configured through its definitions.h header file.
 
-First, set up the environment for running both codes:
+Set up the environment for running both codes:
 
 ```bash
 module purge
@@ -32,7 +26,7 @@ module load PrgEnv-gnu
 module load cray-python/3.8.5.0
 ```
 
-The case definition looks like this:
+The case definition, `$CS_LUMA_DIR/cases/ldc_left_right`, looks like this:
 
 ```
 ldc_left_right
@@ -43,27 +37,25 @@ ldc_left_right
 │   │   └── setup.xml
 │   ├── SRC
 │   │   └── cs_user_coupling.c
-│   └── cs_user_physical_properties.f90
 └── run.cfg
-
 ```
 
-The LEFT and RIGHT directories correspond to the names of the two domains (evolved by LUMA and Code_Saturne, respectively).  
+The files are:
 
-definitions.h is the LUMA case definition file.
+| File                 | Purpose                                                                        |
+|----------------------|--------------------------------------------------------------------------------|
+| `LEFT` and `RIGHT`   | The names of the two domains (evolved by LUMA and Code\_Saturne, respectively) |
+| `definitions.h`      | LUMA case definition                                                           |
+| `setup.xml`          | Code\_Saturne case definition                                                  |
+| `cs_user_coupling.c` | Additional Code_Saturne configuration related to coupling                      |
+| `run.cfg`            | Includes specification of the mapping between domains and codes                |
 
-setup.xml is the standard Code_Saturne case definition file.
 
-cs_user_coupling.c is a C source file containing the Code_Saturne configuration related to coupling.
+On ARCHER2, the case must be set up in the "work" filesystem, as the home directory is not available on the compute nodes.
 
-run.cfg defines the names of the two domains to run, and the solvers (LUMA and Code_Saturne) to launch for each one.
-
-On Archer, the case must be set up in the work directory, as the home directory is not available on the compute nodes.
-
-Change into the directory in which you want to set up the case, and copy the case definition files into this directory.
-
+Change into the directory in which you want to set up the case, and copy the example case definition into this directory:
 ```
-cp -a $case_dir .
+cp -a $CS_LUMA_DIR/cases/ldc_left_right .
 ```
 
 At this point, you could customise the case by editing the configuration files, but for this tutorial, we will run the case as-is.
@@ -73,12 +65,8 @@ At this point, you could customise the case by editing the configuration files, 
 Next, compile LUMA using the definitions.h file from the case definition:
 
 ```
-cd ldc_left_right/LEFT
-rsync -a --exclude input --exclude testsuite --exclude docs --exclude tools --exclude scripts $luma_dir/ build
-cp definitions.h build/inc
-cd build
-make -B -j 8 CS_INSTALL=$CODE_SATURNE_DIR CC=CC CFLAGS="-O3 -std=c++11 -w -fopenmp -g" LAPACK_LIBS=-lsci_gnu EXE=../LUMA HDF5_HOME=/opt/cray/pe/hdf5-parallel/1.12.0.3/crayclang/9.1
-cd ../..
+cd ldc_left_right
+build-luma LEFT/definitions.h $LUMA_DIR/etc/luma.defs LEFT/LUMA CS_INSTALL=$CODE_SATURNE_DIR
 ```
 
 ==**TODO: **==
@@ -98,15 +86,19 @@ Write a batch script to run the case:
 #SBATCH --ntasks         256
 #SBATCH --nodes          2
 #SBATCH --cpus-per-task  1
-#SBATCH --account        ecseaa28
+#SBATCH --account        ecseaa28 # Change to your own account
 #SBATCH --partition      standard
-#SBATCH --time           01:00:00
+#SBATCH --time           12:00:00
 #SBATCH --qos            lowpriority
 
 set -eu
 
-export LD_LIBRARY_PATH=${CODE_SATURNE_DIR}/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
-${CODE_SATURNE_DIR}/bin/code_saturne run
+module purge
+module load PrgEnv-gnu
+module load cray-python/3.8.5.0
+
+export PATH=/work/ecseaa28/ecseaa28/hinderec/staging/cs-luma/Code_Saturne/bin:$PATH
+code_saturne run
 ```
 
 and save it in the case directory as `submit.sh`.  The simulation will run with 128 LUMA processes on one node, and 128 Code_Saturne processes on another node.  
@@ -114,7 +106,7 @@ and save it in the case directory as `submit.sh`.  The simulation will run with 
 Submit the batch job:
 
 ```
-sbatch --export ALL submit.sh
+sbatch submit.sh
 ```
 
 When the job runs, log.txt will contain some logging information, but the detailed logs from the two codes will be in
