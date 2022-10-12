@@ -8,23 +8,17 @@ Versions of Code_Saturne and LUMA which include support for coupling
 between them, as well as the example lid-driven cavity case
 definition, are installed on ARCHER2.
 
-Set up some variables to conveniently refer to these locations:
+Set up your environment to give access to the software:
 ```bash
-export CS_LUMA_DIR=/work/ecseaa28/ecseaa28/hinderec/staging/cs-luma
-export CODE_SATURNE_DIR=$CS_LUMA_DIR/Code_Saturne
-export LUMA_DIR=$CS_LUMA_DIR/LUMA
-export PATH=$LUMA_DIR/bin:$CODE_SATURNE_DIR/bin:$PATH
+module purge
+
+module load PrgEnv-gnu
+module load cray-python/3.8.5.0
+
+source /work/ecseaa28/shared/software/cs-luma-1.0.0-alpha.1-3-g592816a/setup.sh
 ```
 
 Note that while the installed version of Code_Saturne can be used directly, LUMA must be compiled for each case you want to run, as the case parameters are configured through its definitions.h header file.
-
-Set up the environment for running both codes:
-
-```bash
-module purge
-module load PrgEnv-gnu
-module load cray-python/3.8.5.0
-```
 
 The case definition, `$CS_LUMA_DIR/cases/ldc_left_right`, looks like this:
 
@@ -89,10 +83,12 @@ Write a batch script to run the case:
 set -eu
 
 module purge
+
 module load PrgEnv-gnu
 module load cray-python/3.8.5.0
 
-export PATH=/work/ecseaa28/ecseaa28/hinderec/staging/cs-luma/Code_Saturne/bin:$PATH
+source /work/ecseaa28/shared/software/cs-luma-1.0.0-alpha.1-3-g592816a/setup.sh
+
 code_saturne run
 ```
 
