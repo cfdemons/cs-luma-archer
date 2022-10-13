@@ -66,7 +66,9 @@ if [[ "$csluma_version" =~ dirty && $mode != dev && $allow_dirty_release = 0 ]];
 fi
 
 csluma_version=$(git describe --tags)
-csluma_version=${csluma_version:1} # strip leading v
+if [ csluma_version[0] = "v" ]; then
+    csluma_version=${csluma_version:1} # strip leading v
+fi
 
 if [ "$mode" = "release" ]; then
     destdir="${destdir}-$csluma_version"
@@ -97,7 +99,10 @@ if [[ "$cs_version" =~ dirty && $mode != dev ]]; then
     echo "Cannot build a release version with a dirty Code_Saturne repository" >&2
     exit 1
 fi
-cs_version=${cs_version:1} # strip leading v
+
+if [ cs_version[0] = "v" ]; then
+    cs_version=${cs_version:1} # strip leading v
+fi
 export CODE_SATURNE_DIR=$destdir/Code_Saturne
 
 if [ "$mode" = "release" ]; then
