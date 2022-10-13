@@ -3,7 +3,6 @@
 set -eu
 
 # Defaults
-destdir=/work/ecseaa28/shared/software/cs-luma
 mode=dev
 dryrun=0
 allow_dirty_release=0
@@ -11,14 +10,12 @@ allow_dirty_release=0
 # In release mode, all destination directories have a version
 # appended.  This is not done in dev mode
 
+args=()
+
 # Parse arguments
 while [ $# -gt 0 ]; do
     if [[ $1 =~ --.* ]]; then
         case "$1" in
-            --dest-dir)
-                destdir="$2"
-                shift 2
-                ;;
             --mode)
                 mode="$2"
                 if [[ "$mode" != "dev" && "$mode" != "release" ]]; then
@@ -45,6 +42,22 @@ while [ $# -gt 0 ]; do
         shift
     fi
 done
+
+if [ -z "${args+1}" ]; then
+    nargs=0
+else
+    nargs=${#args[@]}
+fi
+
+if [ $nargs = 0 ]; then
+    echo "$0: ERROR; please provide a destination directory argument" >&2
+    exit 1
+elif [ $nargs -gt 1 ]; then
+    echo "$0: ERROR; too many arguments" >&2
+    exit 1
+else
+    destdir=${args[0]}
+fi
 
 csluma_version=$(git describe --tags --dirty)
 if [[ "$csluma_version" =~ dirty && $mode != dev && $allow_dirty_release = 0 ]]; then
