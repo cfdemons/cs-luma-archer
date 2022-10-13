@@ -29,12 +29,22 @@ git clone --recursive https://github.com/cfdemons/cs-luma-archer.git
 The `--recursive` flag is needed to ensure that the Code\_Saturne and
 LUMA submodules are also cloned.
 
-Modify [bin/build-all](bin/build-all) to customise the installation
-location, `destdir`.  Then, run
+To install the software, choose a destination directory DESTDIR and run
 ```
-bin/build-all
+bin/build-all DESTDIR
 ```
 
 The software should be installed in the location you specified.  This
 location can then be used when following the [Tutorial](tutorial.md),
 rather than the location specified there.
+
+By default, build-all installs in "development" mode, which means that
+no version numbers are appended to the destination directories.  To
+see the paths that would be used in release mode, use
+```
+bin/build-all --mode release --dry-run DESTDIR
+```
+and if they are OK, perform the installation with
+```
+bin/build-all --mode release DESTDIR
+```
