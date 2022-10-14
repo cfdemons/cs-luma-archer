@@ -81,7 +81,7 @@ Write a batch script to run the case:
 #SBATCH --ntasks         256
 #SBATCH --nodes          2
 #SBATCH --cpus-per-task  1
-#SBATCH --account        ecseaa28 # Change to your own account
+#SBATCH --account        ACCOUNT       # Change to your own account
 #SBATCH --partition      standard
 #SBATCH --time           12:00:00
 #SBATCH --qos            lowpriority
@@ -94,7 +94,7 @@ source /work/ecseaa28/shared/software/cs-luma-ecse0128-pre1/setup.sh
 code_saturne run
 ```
 
-and save it in the case directory as `submit.sh`.  The simulation will run with 128 LUMA processes on one node, and 128 Code\_Saturne processes on another node.
+and save it in the case directory as `submit.sh`.  Ensure that you enter your own ARCHER2 account as ACCOUNT.  The simulation will run with 128 LUMA processes on one node, and 128 Code\_Saturne processes on another node.
 
 Submit the batch job:
 
