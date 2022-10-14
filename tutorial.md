@@ -195,7 +195,7 @@ We will now plot a profile of $U_y$ at $y = 0.5$ as a function of $x$.
   ```
   Ensure that "Coordinate results" is unset.  This is needed because the reference data in the file is provided in the opposite direction. Rename the Calculator filter as OneMinusY.  Ensure that in Series Parameters, only 100 is selected.  Set X array name to oneminusy.
 
-- Select the Line Chart View and then ensure that in the OneMinusY properties, only the 100 variable is selected (this is the data for Re = 1000).  Set the Legend Name for 1000 to "Reference data.  Deselect Use Index for X axis and choose the X array name as %y.  Set the line style to None and the marker style to Circle and marker size to 10.0.
+- Select the Line Chart View and then ensure that in the OneMinusY properties, only the 1000 variable is selected (this is the data for Re = 1000).  Set the Legend Name for 1000 to "Reference data.  Deselect Use Index for X axis and choose the X array name as %y.  Set the line style to None and the marker style to Circle and marker size to 10.0.
 
 - If any Spreadsheet views have been created from the tabular data, you can close them.
 
