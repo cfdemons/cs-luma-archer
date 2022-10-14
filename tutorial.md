@@ -2,19 +2,26 @@
 
 This tutorial will guide you through setting up a 2D lid-driven cavity simulation run using Code_Saturne coupled to LUMA in a unit cube domain.  LUMA will evolve the portion x <= 0.55, and Code_Saturne will evolve the portion x >= 0.45.  The boundary x=0 is driven with a velocity $v_y = 1$.  Boundary data at the coupling boundaries is obtained from the other code using the PLE library.
 
-## Set up the case
+
+
+# Get access to the coupling-enabled software
 
 Versions of Code_Saturne and LUMA which include support for coupling
 between them, as well as the example lid-driven cavity case
-definition, are installed on ARCHER2.
+definition, are available from the public repository
+https://github.com/cfdemons/cs-luma-archer, as well as being installed
+on ARCHER2.
 
-Set up your environment to give access to the software:
+To use the installed version,
 ```bash
 module purge
 source /work/ecseaa28/shared/software/cs-luma-ecse0128-pre1/setup.sh
 ```
 
-Note that while the installed version of Code_Saturne can be used directly, LUMA must be compiled for each case you want to run, as the case parameters are configured through its definitions.h header file.
+Alternatively, to build the codes into a directory of your choice,
+follow the [build instructions](README.md).
+
+## Set up the case
 
 The case definition, `$CS_LUMA_DIR/cases/ldc_left_right`, looks like this:
 
