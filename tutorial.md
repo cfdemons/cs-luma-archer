@@ -1,6 +1,6 @@
 # Code_Saturne LUMA Coupling Tutorial
 
-This tutorial will guide you through setting up a 2D lid-driven cavity simulation run using Code_Saturne coupled to LUMA in a unit cube domain.  LUMA will evolve the portion x <= 0.55, and Code_Saturne will evolve the portion x <= 0.45.  The boundary x=0 is driven with a velocity $v_y = 1$.  Boundary data at the coupling boundaries is obtained from the other code using the PLE library.
+This tutorial will guide you through setting up a 2D lid-driven cavity simulation run using Code_Saturne coupled to LUMA in a unit cube domain.  LUMA will evolve the portion x <= 0.55, and Code_Saturne will evolve the portion x >= 0.45.  The boundary x=0 is driven with a velocity $v_y = 1$.  Boundary data at the coupling boundaries is obtained from the other code using the PLE library.
 
 ## Set up the case
 
