@@ -48,3 +48,11 @@ and if they are OK, perform the installation with
 ```
 bin/build-all --mode release DESTDIR
 ```
+
+The codes can then be used, for example according to the
+[Tutorial](tutorial.md), by setting up the environment with
+
+```
+module purge
+source DESTDIR/setup.sh
+```
