@@ -59,7 +59,10 @@ At this point, you could customise the case by editing the configuration files, 
 
 ## Compile LUMA for this case
 
-Next, compile a LUMA executable `LEFT/LUMA` using `LEFT/definitions.h`:
+LUMA must be compiled for each case you want to run, as the case
+parameters are configured through its definitions.h header file.
+
+To compile a LUMA executable `LEFT/LUMA` using `LEFT/definitions.h`,
 
 ```
 cd ldc_left_right
