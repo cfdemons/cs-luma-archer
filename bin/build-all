@@ -130,7 +130,7 @@ if [ "$mode" = "release" ]; then
     LUMA_DIR="${LUMA_DIR}-$luma_version"
 fi
 
-$installer_prefix bin/install-luma $PWD/components/LUMA $LUMA_DIR
+$installer_prefix bin/install-luma $PWD/components/LUMA $builddir/luma $LUMA_DIR
 
 # Case definitions
 
@@ -145,5 +145,5 @@ module load cray-python/3.8.5.0
 export CS_LUMA_DIR=$destdir
 export CODE_SATURNE_DIR=$CODE_SATURNE_DIR
 export LUMA_DIR=$LUMA_DIR
-export PATH=$destdir/bin:\$LUMA_DIR/bin:\$CODE_SATURNE_DIR/bin:\$PATH
+export PATH=\$LUMA_DIR/bin:\$CODE_SATURNE_DIR/bin:\$PATH
 EOF
