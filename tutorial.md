@@ -90,6 +90,12 @@ module purge
 source /work/ecseaa28/shared/software/cs-luma-ecse0128-pre1/setup.sh
 
 code_saturne run
+
+# Replace timestamps in filenames
+cd RESU_COUPLING
+ln -sf $(ls -d *-*|sort|tail -1) latest
+cd latest/LEFT
+ln -sf $(ls -d output_*|sort|tail -1) latest
 ```
 
 and save it in the case directory as `submit.sh`.  Ensure that you enter your own ARCHER2 account as ACCOUNT.  The simulation will run with 128 LUMA processes on one node, and 128 Code\_Saturne processes on another node.
@@ -134,13 +140,19 @@ cd ../../../..
 
 The VTK files will be generated in `RESU_COUPLING/*/LEFT/output_*/postprocessedoutput`.
 
-The output of the simulation can be visualised in ParaView.  You can either run ParaView in client-server mode, with pvserver running on Archer, and a local ParaView client running on your own computer, or you can copy the case output data to your own computer and visualise them directly with ParaView running there.  Documentation for using ParaView in client-server mode is available [here](https://docs.archer2.ac.uk/data-tools/paraview/)
+The output of the simulation can be visualised in ParaView.  You can either run ParaView in client-server mode, with pvserver running on Archer, and a local ParaView client running on your own computer, or you can copy the case output data to your own computer and visualise them directly with ParaView running there.  Documentation for using ParaView in client-server mode is available [here](https://docs.archer2.ac.uk/data-tools/paraview/).
 
-A visualisation of the fluid velocity magnitude from both codes can be created using the following steps:
+Assuming you have a locally installed version of ParaView, you can copy the data to your local machine with
+```
+rsync -avz USERNAME@login.archer2.ac.uk:/path/to/ldc_left_right .
+```
+making sure to replace /path/to with the path to the ldc\_left\_right directory on ARCHER2.
 
-- Launch ParaView and open the LUMA fluid timeseries from `RESU_COUPLING/*/LEFT/output_*/postprocessedoutput/luma_000.*.vtu`.
+A visualisation of the fluid velocity magnitude from both codes can be created using the following steps.  
 
-- Next, open the Code\_Saturne fluid data from `RESU_COUPLING/*/RIGHT/postprocessing/RESULTS_FLUID_DOMAIN.case`.
+- Launch ParaView and open the LUMA fluid timeseries from `ldc_left_right/RESU_COUPLING/*/LEFT/output_*/postprocessedoutput/luma_000.*.vtu`.
+
+- Next, open the Code\_Saturne fluid data from `ldc_left_rightRESU_COUPLING/*/RIGHT/postprocessing/RESULTS_FLUID_DOMAIN.case`.
 
 - Select luma_000.* in the pipeline browser and click Apply, then rename it as "LUMA".
 
@@ -168,6 +180,8 @@ A visualisation of the fluid velocity magnitude from both codes can be created u
 
 - Select the custom colour range 0 to 1.
 
+- Reset the view direction to "-Z" using the toolbar if necessary.
+
 You should now be able to animate the visualisation using the animation controls in the toolbar.  The velocity profile should start on the left in the LUMA half of the domain, and propagate smoothly to the right into the Code\_Saturne part.
 
 We will now plot a profile of $U_y$ at $y = 0.5$ as a function of $x$.
@@ -176,7 +190,8 @@ We will now plot a profile of $U_y$ at $y = 0.5$ as a function of $x$.
   ```
   Uy * 0.01/0.005
   ```
-
+  and click Apply.
+  
 - Select the calculator filter and create a Cell Data to Point Data filter, then click Apply.
 
 - Create a Plot over line filter.  Click X Axis, then Apply.  Under Series Parameters, ensure that only Uy\_LUMA is selected.  Select X Array Name as Points_X.
@@ -187,15 +202,15 @@ We will now plot a profile of $U_y$ at $y = 0.5$ as a function of $x$.
 
 - The Line Chart View should now show $U_y$ as a function of $x$ for the data from the two codes at the current time. You can use the animation controls to view the velocity at different times.
 
-- Open the file lid\_driven\_cavity\_literature1.txt and click Apply.  Tick "Add Tab field delimiter".  Rename the dataset as "Reference data".  
+- Open the file lid\_driven\_cavity\_literature1.txt and click Apply.  Tick "Add Tab field delimiter" and click Apply.  Rename the dataset as "Reference data".  
 
 - Create a Calculator filter with Result Array Name "oneminusy" and formula
   ```
   1-"%y"
   ```
-  Ensure that "Coordinate results" is unset.  This is needed because the reference data in the file is provided in the opposite direction. Rename the Calculator filter as OneMinusY.  Ensure that in Series Parameters, only 100 is selected.  Set X array name to oneminusy.
-
-- Select the Line Chart View and then ensure that in the OneMinusY properties, only the 1000 variable is selected (this is the data for Re = 1000).  Set the Legend Name for 1000 to "Reference data.  Deselect Use Index for X axis and choose the X array name as %y.  Set the line style to None and the marker style to Circle and marker size to 10.0.
+  Ensure that "Coordinate results" is unset.  Click Apply.  This is needed because the reference data in the file is provided in the opposite direction. Rename the Calculator filter as OneMinusY.  
+  
+- Select the Line Chart View and ensure that OneMinusY is visible (click the eye icon next to OneMinusY in the Pipeline Browser).  Ensure that in the OneMinusY properties, only the 1000 variable is selected (this is the data for Re = 1000).  Set the Legend Name for 1000 to "Reference data.  Deselect Use Index for X axis and choose the X array name as "oneminusy".  Set the line style to None and the marker style to Circle and marker size to 10.0.
 
 - If any Spreadsheet views have been created from the tabular data, you can close them.
 
