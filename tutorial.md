@@ -146,6 +146,33 @@ rsync -avz USERNAME@login.archer2.ac.uk:/path/to/ldc_left_right .
 ```
 making sure to replace /path/to with the path to the ldc\_left\_right directory on ARCHER2.
 
+Download the Ghia et al. reference data from file [lid\_driven\_cavity\_literature1.txt](https://www.comsol.com/model/download/507511/lid_driven_cavity_literature1.txt).
+
+### Open the ParaView state file
+
+We have provided ParaView state files for ParaView 5.9.1 and 5.10.1 in the case directory.
+
+- Open ParaView, and go to `File -> Load State...`, navigate to `ldc_left_right/visualise_X.Y.Z.pvsm` where X.Y.Z corresponds to the version of ParaView and open it.
+
+- In the Load State Options window, select Choose File Names
+
+- For Code_Saturne case file, navigate to `ldc_left_right/RESU_COUPLING/*/RIGHT/postprocessing/RESULTS_FLUID_DOMAIN.case` and click OK.
+
+- For LUMA file name, navigate to `ldc_left_right/RESU_COUPLING/*/LEFT/output_*/postprocessedoutput/luma_000.*.vtu` and click OK.
+
+- For Reference data file name, navigate to `lid_driven_cavity_literature1.txt` and click OK.
+
+If all goes well, ParaView will show a 2D plot of the velocity magnitude and a line plot of the velocity profile and a comparison with the reference data of Ghia et al. 
+
+The following figure shows the result of the visualisation at time output index 75.
+
+![paraview.png](paraview.png)
+
+With the resolution and overlap distance used in this tutorial, the agreement with the reference data is not very good.  Doubling the resolution and overlap distance would lead to the agreement shown in the technical report.
+
+If for some reason loading the state file does not work, you can follow the remaining steps in this tutorial to recreate the visualisation.  Make sure to first quit and reload ParaView.
+
+
 ### Visualise fluid velocity flow
 
 A visualisation of the fluid velocity magnitude from both codes can be created using the following steps.
@@ -220,8 +247,3 @@ Download the reference data file [lid\_driven\_cavity\_literature1.txt](https://
 
 - If any Spreadsheet views have been created from the tabular data, you can close them.
 
-The following figure shows the result of the visualisation at time output index 75.
-
-![paraview.png](paraview.png)
-
-With the resolution and overlap distance used in this tutorial, the agreement with the reference data is not very good.  Doubling the resolution and overlap distance would lead to the agreement shown in the technical report.
