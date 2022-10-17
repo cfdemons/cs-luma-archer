@@ -1,0 +1,47 @@
+#!/bin/bash
+
+set -eu
+
+URL="$1"
+BUILDDIR="$2"
+INSTALLDIR="$3"
+
+#URL=https://www.vtk.org/files/release/9.2/VTK-9.2.2.tar.gz
+ARCHIVE=${URL##*/}
+UNPACKED=${ARCHIVE%.tar.gz}
+
+mkdir -p $BUILDDIR
+cd $BUILDDIR
+
+set +eu
+module purge
+module load PrgEnv-gnu
+module load cray-python/3.8.5.0
+module load cmake/3.18.4
+set -eu
+
+echo "== Downloading =========================================================="
+if [ ! -r $ARCHIVE ]; then
+    wget ${URL}
+fi
+
+echo "== Unpacking ============================================================"
+if [ ! -r $UNPACKED ]; then
+   tar xfz $ARCHIVE
+fi
+
+cd $UNPACKED
+
+echo "== Configuring =========================================================="
+
+mkdir -p build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=$INSTALLDIR ..
+
+echo "== Compiling ============================================================"
+nice make -j 16
+
+echo "== Installing ==========================================================="
+nice make -j 16 install
+
+echo "Successfully installed VTK in $INSTALLDIR in $SECONDS s"
