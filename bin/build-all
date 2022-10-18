@@ -149,5 +149,5 @@ export PATH=$destdir/bin:\$LUMA_DIR/bin:\$CODE_SATURNE_DIR/bin:\$PATH
 EOF
 
 # Scripts
-mkdir -p "$destdir/bin"
-cp -a bin/update-latest-symlinks "$destdir/bin"
+$installer_prefix mkdir -p "$destdir/bin"
+$installer_prefix cp -a bin/update-latest-symlinks "$destdir/bin"
