@@ -179,7 +179,7 @@ A visualisation of the fluid velocity magnitude from both codes can be created u
 
 - Launch ParaView and open the LUMA fluid timeseries from `ldc_left_right/RESU_COUPLING/*/LEFT/output_*/postprocessedoutput/luma_000.*.vtu`.
 
-- Next, open the Code\_Saturne fluid data from `ldc_left_rightRESU_COUPLING/*/RIGHT/postprocessing/RESULTS_FLUID_DOMAIN.case`.
+- Next, open the Code\_Saturne fluid data from `ldc_left_right/RESU_COUPLING/*/RIGHT/postprocessing/RESULTS_FLUID_DOMAIN.case`.
 
 - Select luma_000.* in the pipeline browser and click Apply, then rename it as "LUMA".
 
@@ -187,9 +187,9 @@ A visualisation of the fluid velocity magnitude from both codes can be created u
 
 - Create a Calculator filter for the Slice1 dataset with result array name Umag\_LUMA and formula
     ```
-    sqrt(Ux^2 + Uy^2 + Uz^2) * 0.01/0.005
+    sqrt(Ux^2 + Uy^2 + Uz^2) * 0.005/0.00125
     ```
-  Click Apply.  The 0.01 and 0.005 are the cell size and timestep in the LUMA simulation, respectively.  This is a conversion from LBM lattice units to physical units.
+  Click Apply.  The 0.005 and 0.00125 are the cell size and timestep in the LUMA simulation, respectively.  This is a conversion from LBM lattice units to physical units.
 
 - Set Colouring to "Umag_LUMA". Rename the Calculator filter as "Umag\_LUMA".
 
@@ -217,7 +217,7 @@ We will now plot a profile of $U_y$ at $y = 0.5$ as a function of $x$.
 
 - Select Slice1 under LUMA and create a Calculator filter with result array name Uy_LUMA and formula
   ```
-  Uy * 0.01/0.005
+  Uy * 0.005/0.00125
   ```
   and click Apply.
   
@@ -243,7 +243,8 @@ Download the reference data file [lid\_driven\_cavity\_literature1.txt](https://
   ```
   Ensure that "Coordinate results" is unset.  Click Apply.  This coordinate mapping is required because of a difference in convention between the simulation and the reference data. Rename the Calculator filter as OneMinusY.
   
-- Select the Line Chart View and ensure that OneMinusY is visible (click the eye icon next to OneMinusY in the Pipeline Browser).  Ensure that in the OneMinusY properties, only the 1000 variable is selected (this is the data for Re = 1000).  Set the Legend Name for 1000 to "Reference data.  Deselect Use Index for X axis and choose the X array name as "oneminusy".  Set the line style to None and the marker style to Circle and marker size to 10.0.
+- Select the Line Chart View and ensure that OneMinusY is visible (click the eye icon next to OneMinusY in the Pipeline Browser).  Ensure that in the OneMinusY properties, only the 400 variable is selected (this is the data for Re = 400).  Set the Legend Name for 400 to "Reference data".  Deselect Use Index for X axis and choose the X array name as "oneminusy".  Set the line style to None and the marker style to Circle and marker size to 10.0. Change the color of the 400 line to blue.
 
 - If any Spreadsheet views have been created from the tabular data, you can close them.
 
+You should now have results similar to those shown in the screenshot above.
