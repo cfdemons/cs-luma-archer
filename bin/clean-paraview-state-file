@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+statefile="$1"
+
+sed -i.bak 's|/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/[0-9]\+-[0-9]\+|ldc_left_right/RESU_COUPLING/latest|g ; s|output_[0-9_-]\+|latest|g' "$statefile"
