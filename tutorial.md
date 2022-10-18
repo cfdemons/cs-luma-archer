@@ -164,11 +164,9 @@ We have provided ParaView state files for ParaView 5.9.1 and 5.10.1 in the case 
 
 If all goes well, ParaView will show a 2D plot of the velocity magnitude and a line plot of the velocity profile and a comparison with the reference data of Ghia et al. 
 
-The following figure shows the result of the visualisation at time output index 75.
+The following figure shows the result of the visualisation at time output index 37 (corresponding to 37 s in physical time).
 
 ![paraview.png](paraview.png)
-
-With the resolution and overlap distance used in this tutorial, the agreement with the reference data is not very good.  Doubling the resolution and overlap distance would lead to the agreement shown in the technical report.
 
 If for some reason loading the state file does not work, you can follow the remaining steps in this tutorial to recreate the visualisation.  Make sure to first quit and reload ParaView.
 
