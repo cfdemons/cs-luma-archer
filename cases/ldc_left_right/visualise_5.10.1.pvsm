@@ -18287,7 +18287,7 @@
     </Proxy>
     <Proxy group="sources" type="ensight" id="15180" servers="1">
       <Property name="CaseFileName" id="15180.CaseFileName" number_of_elements="1">
-        <Element index="0" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/RIGHT/postprocessing/RESULTS_FLUID_DOMAIN.case"/>
+        <Element index="0" value="ldc_left_right/RESU_COUPLING/latest/RIGHT/postprocessing/RESULTS_FLUID_DOMAIN.case"/>
         <Domain name="files" id="15180.CaseFileName.files"/>
       </Property>
       <Property name="CellArrayInfo" id="15180.CellArrayInfo" number_of_elements="12">
@@ -18374,48 +18374,48 @@
     </Proxy>
     <Proxy group="sources" type="XMLUnstructuredGridReader" id="14940" servers="1">
       <Property name="FileName" id="14940.FileName" number_of_elements="38">
-        <Element index="0" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.0.vtu"/>
-        <Element index="1" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.800.vtu"/>
-        <Element index="2" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.1600.vtu"/>
-        <Element index="3" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.2400.vtu"/>
-        <Element index="4" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.3200.vtu"/>
-        <Element index="5" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.4000.vtu"/>
-        <Element index="6" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.4800.vtu"/>
-        <Element index="7" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.5600.vtu"/>
-        <Element index="8" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.6400.vtu"/>
-        <Element index="9" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.7200.vtu"/>
-        <Element index="10" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.8000.vtu"/>
-        <Element index="11" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.8800.vtu"/>
-        <Element index="12" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.9600.vtu"/>
-        <Element index="13" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.10400.vtu"/>
-        <Element index="14" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.11200.vtu"/>
-        <Element index="15" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.12000.vtu"/>
-        <Element index="16" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.12800.vtu"/>
-        <Element index="17" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.13600.vtu"/>
-        <Element index="18" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.14400.vtu"/>
-        <Element index="19" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.15200.vtu"/>
-        <Element index="20" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.16000.vtu"/>
-        <Element index="21" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.16800.vtu"/>
-        <Element index="22" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.17600.vtu"/>
-        <Element index="23" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.18400.vtu"/>
-        <Element index="24" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.19200.vtu"/>
-        <Element index="25" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.20000.vtu"/>
-        <Element index="26" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.20800.vtu"/>
-        <Element index="27" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.21600.vtu"/>
-        <Element index="28" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.22400.vtu"/>
-        <Element index="29" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.23200.vtu"/>
-        <Element index="30" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.24000.vtu"/>
-        <Element index="31" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.24800.vtu"/>
-        <Element index="32" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.25600.vtu"/>
-        <Element index="33" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.26400.vtu"/>
-        <Element index="34" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.27200.vtu"/>
-        <Element index="35" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.28000.vtu"/>
-        <Element index="36" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.28800.vtu"/>
-        <Element index="37" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.29600.vtu"/>
+        <Element index="0" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.0.vtu"/>
+        <Element index="1" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.800.vtu"/>
+        <Element index="2" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.1600.vtu"/>
+        <Element index="3" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.2400.vtu"/>
+        <Element index="4" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.3200.vtu"/>
+        <Element index="5" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.4000.vtu"/>
+        <Element index="6" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.4800.vtu"/>
+        <Element index="7" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.5600.vtu"/>
+        <Element index="8" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.6400.vtu"/>
+        <Element index="9" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.7200.vtu"/>
+        <Element index="10" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.8000.vtu"/>
+        <Element index="11" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.8800.vtu"/>
+        <Element index="12" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.9600.vtu"/>
+        <Element index="13" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.10400.vtu"/>
+        <Element index="14" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.11200.vtu"/>
+        <Element index="15" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.12000.vtu"/>
+        <Element index="16" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.12800.vtu"/>
+        <Element index="17" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.13600.vtu"/>
+        <Element index="18" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.14400.vtu"/>
+        <Element index="19" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.15200.vtu"/>
+        <Element index="20" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.16000.vtu"/>
+        <Element index="21" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.16800.vtu"/>
+        <Element index="22" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.17600.vtu"/>
+        <Element index="23" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.18400.vtu"/>
+        <Element index="24" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.19200.vtu"/>
+        <Element index="25" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.20000.vtu"/>
+        <Element index="26" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.20800.vtu"/>
+        <Element index="27" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.21600.vtu"/>
+        <Element index="28" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.22400.vtu"/>
+        <Element index="29" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.23200.vtu"/>
+        <Element index="30" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.24000.vtu"/>
+        <Element index="31" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.24800.vtu"/>
+        <Element index="32" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.25600.vtu"/>
+        <Element index="33" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.26400.vtu"/>
+        <Element index="34" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.27200.vtu"/>
+        <Element index="35" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.28000.vtu"/>
+        <Element index="36" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.28800.vtu"/>
+        <Element index="37" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.29600.vtu"/>
         <Domain name="files" id="14940.FileName.files"/>
       </Property>
       <Property name="FileNameInfo" id="14940.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="/Users/h52229ih/Documents/Projects/CS-LUMA/data/archer/ldc_left_right_200_0.2_2/RESU_COUPLING/20221017-2032/LEFT/output_2022-10-17_20-32-33/postprocessedoutput/luma_000.0.vtu"/>
+        <Element index="0" value="ldc_left_right/RESU_COUPLING/latest/LEFT/latest/postprocessedoutput/luma_000.0.vtu"/>
       </Property>
       <Property name="TimestepValues" id="14940.TimestepValues" number_of_elements="38">
         <Element index="0" value="0"/>
