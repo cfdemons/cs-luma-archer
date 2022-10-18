@@ -87,7 +87,7 @@ Write a batch script to run the case:
 set -eu
 
 module purge
-source /work/ecseaa28/shared/software/cs-luma-ecse0128-pre1/setup.sh
+source /work/ecseaa28/shared/software/cs-luma-ecse0128-pre2/setup.sh
 
 code_saturne run
 ```
