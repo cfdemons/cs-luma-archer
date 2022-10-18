@@ -22,7 +22,7 @@
       <writer id="-1" label="results">
         <directory name="postprocessing"/>
         <format name="ensight" options="separate_meshes"/>
-        <frequency period="time_step">200</frequency>
+        <frequency period="time_step">800</frequency>
         <output_at_start status="on"/>
         <output_at_end status="on"/>
         <time_dependency choice="fixed_mesh"/>
@@ -32,7 +32,7 @@
     <scalar_balances/>
     <time_averages/>
     <time_parameters>
-      <iterations>15001</iterations>
+      <iterations>30001</iterations>
       <max_courant_num>1</max_courant_num>
       <max_fourier_num>10</max_fourier_num>
       <property name="courant_number" label="CourantNb"/>
@@ -44,7 +44,7 @@
       <time_passing>0</time_passing>
       <time_step_max_factor>1000</time_step_max_factor>
       <time_step_min_factor>0.1</time_step_min_factor>
-      <time_step_ref>0.005</time_step_ref>
+      <time_step_ref>0.00125</time_step_ref>
       <time_step_var>0.1</time_step_var>
     </time_parameters>
   </analysis_control>
@@ -116,7 +116,7 @@
         <postprocessing_recording status="off"/>
       </property>
       <property name="molecular_viscosity" choice="constant" label="LamVisc">
-        <initial_value>0.001</initial_value>
+        <initial_value>0.0025</initial_value>
         <listing_printing status="off"/>
         <postprocessing_recording status="off"/>
       </property>
@@ -140,9 +140,9 @@
     <faces_cutting status="off"/>
     <joining/>
     <mesh_cartesian>
-      <x_direction ncells="55" min="0.45" max="1.0" prog="1.0" law="constant"/>
-      <y_direction ncells="100" min="0.01" max="1.01" prog="1.0" law="constant"/>
-      <z_direction ncells="5" min="0.0" max="0.05" prog="1.0" law="constant"/>
+      <x_direction ncells="120" min="0.40" max="1.0" prog="1.0" law="constant"/>
+      <y_direction ncells="200" min="0.005" max="1.005" prog="1.0" law="constant"/>
+      <z_direction ncells="5" min="0.0" max="0.025" prog="1.0" law="constant"/>
     </mesh_cartesian>
     <mesh_origin choice="mesh_cartesian"/>
     <mesh_smoothing status="off"/>

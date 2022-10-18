@@ -93,8 +93,8 @@
 //#define L_TEMPERATURE                   ///< Enable calculation of temperature field
 
 // Output Options
-#define L_GRID_OUT_FREQ 200					///< How many timesteps before whole grid output
-#define L_EXTRA_OUT_FREQ 200					///< Specific output frequency of body forces
+#define L_GRID_OUT_FREQ 800					///< How many timesteps before whole grid output
+#define L_EXTRA_OUT_FREQ 800					///< Specific output frequency of body forces
 #define L_OUTPUT_PRECISION 10					///< Precision of output (for text writers)
 #define L_RESTART_OUT_FREQ (100*L_GRID_OUT_FREQ)			///< Frequency of write out of restart file
 #define L_PROBE_OUT_FREQ 1000000				///< Write out frequency of probe output
@@ -143,7 +143,7 @@
 *******************************************************************************
 */
 
-#define L_TOTAL_TIMESTEPS 15001					///< Number of time steps to run simulation for
+#define L_TOTAL_TIMESTEPS 30001					///< Number of time steps to run simulation for
 
 
 /*
@@ -175,15 +175,15 @@
 
 // Lattice properties
 #define L_DIMS 3													///< Number of dimensions to the problem
-#define L_RESOLUTION 100											    ///< Number of coarse lattice sites per unit length
-#define L_TIMESTEP 0.005										    ///< The timestep in non-dimensional units
-#define L_CH_LENGTH (L_M - 2.*1.0/L_RESOLUTION)                      ///< Define the characteristic length (used in force term)
+#define L_RESOLUTION 200										    ///< Number of coarse lattice sites per unit length
+#define L_TIMESTEP 0.00125										    ///< The timestep in non-dimensional units
+#define L_CH_LENGTH (L_M - 2.*1.0/L_RESOLUTION)                     ///< Define the characteristic length (used in force term)
                                                                     ///< -2 when couple with CS
 
 // Non-dimensional domain dimensions
-#define L_BX 0.55//0.6															///< End of domain in X (non-dimensional units)
-#define L_BY (1.0+2.0/L_RESOLUTION) //(0.6 + 1.0/L_RESOLUTION) 					///< End of domain in Y (non-dimensional units)
-#define L_BZ 0.05															///< End of domain in Z (non-dimensional units)
+#define L_BX 0.6   												///< End of domain in X (non-dimensional units)
+#define L_BY (1.0+2.0/L_RESOLUTION)              					///< End of domain in Y (non-dimensional units)
+#define L_BZ 0.025					    							///< End of domain in Z (non-dimensional units)
 
 // Physical velocity
 #define L_PHYSICAL_U 1.0		///< Reference velocity of the real fluid to model [m/s]
@@ -226,8 +226,8 @@ static std::string pleName[L_PLE_INTERFACES] = {"CS_inlet", "LUMA_outlet"}; //CS
 
 // Position of each PLE interface in the LUMA domain. In dimensionless units and global coordinate system.
 // Set in this way is to corespond the above PLE interface name and the below interface judgement
-static double plePosX[L_PLE_INTERFACES][L_COUPLING_ENTITY] = {{0.44}, {0.54}};
-static double plePosY[L_PLE_INTERFACES][L_COUPLING_ENTITY] = {{0.01}, {0.01}};
+static double plePosX[L_PLE_INTERFACES][L_COUPLING_ENTITY] = {{0.395}, {0.595}};
+static double plePosY[L_PLE_INTERFACES][L_COUPLING_ENTITY] = {{0.005}, {0.005}};
 static double plePosZ[L_PLE_INTERFACES][L_COUPLING_ENTITY] = {{0.0},  {0.0}};
 
 // Coulple with CS face causes small offset to match LUMA mesh
@@ -287,7 +287,7 @@ static std::string pleWrite[L_PLE_INTERFACES] = { "v"};*/
 #define L_RHOIN 1.0			///< Initial density. In lattice units.
 
 //#define L_NU 0.02          ///< Dimensionless kinematic viscosity L_NU = 1/Re. Comment it to use L_RE instead.
-#define L_RE 1000			///< Desired Reynolds number
+#define L_RE 400			///< Desired Reynolds number
 //#define L_REYNOLDS_RAMP 1000	///< Defines over how many time steps to ramp the Reynolds number
 
 #define L_TDIFF 1.0     ///< Set high and low temperature difference in lattice units, unless special purpose, set as 1.0
