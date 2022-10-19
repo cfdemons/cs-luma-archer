@@ -175,7 +175,9 @@ If for some reason loading the state file does not work, you can follow the rema
 
 A visualisation of the fluid velocity magnitude from both codes can be created using the following steps.
 
-- Launch ParaView and open the LUMA fluid timeseries from `ldc_left_right/RESU_COUPLING/*/LEFT/output_*/postprocessedoutput/luma_000.*.vtu`.
+- Launch ParaView
+
+- Next, open the LUMA fluid timeseries from `ldc_left_right/RESU_COUPLING/*/LEFT/output_*/postprocessedoutput/luma_000.*.vtu`.
 
 - Next, open the Code\_Saturne fluid data from `ldc_left_right/RESU_COUPLING/*/RIGHT/postprocessing/RESULTS_FLUID_DOMAIN.case`.
 
