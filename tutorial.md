@@ -150,9 +150,9 @@ Download the Ghia et al. reference data from file [lid\_driven\_cavity\_literatu
 
 ### Open the ParaView state file
 
-We have provided ParaView state files for ParaView 5.9.1 and 5.10.1 in the case directory.
+We have provided ParaView state files for ParaView 5.10.1 in the case directory.
 
-- Open ParaView, and go to `File -> Load State...`, navigate to `ldc_left_right/visualise_X.Y.Z.pvsm` where X.Y.Z corresponds to the version of ParaView and open it.
+- Open ParaView, and go to `File -> Load State...`, navigate to `ldc_left_right/visualise.pvsm` and open it.
 
 - In the Load State Options window, select Choose File Names
 
