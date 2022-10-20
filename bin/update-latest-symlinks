@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Create "latest" symlink for the latest timestamp ID directories
+
+set -e
+set -u
+
+casedir="$1"
+cd "$casedir/RESU_COUPLING"
+
+latest_cs=$(ls -d *-*|sort|tail -1)
+ln -sf "$latest_cs" latest
+cd latest/LEFT
+latest_luma=$(ls -d output_*|sort|tail -1)
+ln -sf $latest_luma latest

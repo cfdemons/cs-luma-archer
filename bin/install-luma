@@ -2,11 +2,14 @@
 
 # Parse arguments
 srcdir="$1"
-destdir="$2"
+builddir="$2"
+destdir="$3"
 
 # Copy LUMA source
 rsync -a --exclude input --exclude testsuite --exclude docs --exclude tools --exclude scripts --exclude definitions.h --prune-empty-dirs --delete-excluded --delete $srcdir/LUMA/ $destdir
 
-# Copy LUMA configuration definitions
+# Build h5mgm
+bin/build-h5mgm $srcdir/LUMA $builddir/h5mgm $destdir
 
+# Copy LUMA configuration definitions
 rsync -a etc/luma.defs $destdir/etc/

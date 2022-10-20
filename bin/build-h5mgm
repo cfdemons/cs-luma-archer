@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -e
+set -u
+
+srcdir="$1"
+builddir="$2"
+destdir="$3"
+
+mkdir -p $builddir
+rsync -av --exclude input --exclude testsuite --exclude docs "$srcdir/" "$builddir/"
+
+HDF5_DIR=/opt/cray/pe/hdf5-parallel/1.12.0.3/crayclang/9.1
+VTK_VERSION=9.2
+VTK_INCLUDE_DIR=/work/ecseaa28/ecseaa28/hinderec/projects/cs-luma/software/vtk-9.2.2/include/vtk-${VTK_VERSION}
+VTK_LIB_DIR=/work/ecseaa28/ecseaa28/hinderec/projects/cs-luma/software/vtk-9.2.2/lib64
+MPICXX=CC
+
+set +eu
+module purge
+module load PrgEnv-gnu
+set -eu
+
+make -C $builddir/tools/post_processors/h5mgm -B \
+     HDF5_HOME="$HDF5_DIR" \
+     VTK_VER="$VTK_VERSION" \
+     INC_VTK=-I"$VTK_INCLUDE_DIR" \
+     LIBPATH_VTK=-L"$VTK_LIB_DIR" \
+     CC="$MPICXX -O3 -std=c++0x -w -Wl,-rpath,$VTK_LIB_DIR"
+
+mkdir -p $destdir/bin
+cp -av $builddir/tools/post_processors/h5mgm/h5mgm $destdir/bin
+echo "h5mgm installed in $destdir"
