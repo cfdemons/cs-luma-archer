@@ -13,7 +13,7 @@ on ARCHER2.
 To use the installed version,
 ```bash
 module purge
-source /work/ecseaa28/shared/software/cs-luma-ecse0128-pre2/setup.sh
+source /work/ecseaa28/shared/software/cs-luma-ecse0128.0/setup.sh
 ```
 
 Alternatively, to build the codes into a directory of your choice,
@@ -87,7 +87,7 @@ Write a batch script to run the case:
 set -eu
 
 module purge
-source /work/ecseaa28/shared/software/cs-luma-ecse0128-pre2/setup.sh
+source /work/ecseaa28/shared/software/cs-luma-ecse0128.0/setup.sh
 
 code_saturne run
 ```
