@@ -81,7 +81,7 @@ Write a batch script to run the case:
 #SBATCH --cpus-per-task  1
 #SBATCH --account        ACCOUNT       # Change to your own account
 #SBATCH --partition      standard
-#SBATCH --time           12:00:00
+#SBATCH --time           3:00:00
 #SBATCH --qos            lowpriority
 
 set -eu
