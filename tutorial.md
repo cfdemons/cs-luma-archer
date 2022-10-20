@@ -33,6 +33,7 @@ ldc_left_right
 │   ├── SRC
 │   │   └── cs_user_coupling.c
 └── run.cfg
+└── visualise.pvsm
 ```
 
 The files are:
@@ -42,8 +43,9 @@ The files are:
 | `LEFT` and `RIGHT`   | The names of the two domains (evolved by LUMA and Code\_Saturne, respectively) |
 | `definitions.h`      | LUMA case definition                                                           |
 | `setup.xml`          | Code\_Saturne case definition                                                  |
-| `cs_user_coupling.c` | Additional Code\_Saturne configuration related to coupling                      |
+| `cs_user_coupling.c` | Additional Code\_Saturne configuration related to coupling                     |
 | `run.cfg`            | Includes specification of the mapping between domains and codes                |
+| `visualise.pvsm`     | ParaView state file for 2D and profile visualisation                           |
 
 
 On ARCHER2, the case must be set up in the "work" filesystem, as the home directory is not available on the compute nodes.
