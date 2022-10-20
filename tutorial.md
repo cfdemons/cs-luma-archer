@@ -1,6 +1,6 @@
 # Code_Saturne LUMA Coupling Tutorial
 
-This tutorial will guide you through setting up a 2-dimensional lid-driven cavity simulation run using Code_Saturne coupled to LUMA in a unit cube domain.  LUMA will evolve the portion $x \le 0.55$, and Code_Saturne will evolve the portion $x \ge 0.45$.  The boundary $x=0$ is driven with a velocity $u_y = 1$.  Boundary data at the coupling boundaries is obtained from the other code using the PLE library.
+This tutorial will guide you through setting up a 2-dimensional lid-driven cavity simulation run using Code\_Saturne coupled to LUMA in a unit cube domain.  LUMA will evolve the portion $x \le 0.55$, and Code\_Saturne will evolve the portion $x \ge 0.45$.  The boundary $x=0$ is driven with a velocity $u_y = 1$.  Boundary data at the coupling boundaries is obtained from the other code using the PLE library.
 
 ## Get access to the coupling-enabled software
 
@@ -156,7 +156,7 @@ We have provided ParaView state files for ParaView 5.10.1 in the case directory.
 
 - In the Load State Options window, select Choose File Names
 
-- For Code_Saturne case file, navigate to `ldc_left_right/RESU_COUPLING/*/RIGHT/postprocessing/RESULTS_FLUID_DOMAIN.case` and click OK.
+- For Code\_Saturne case file, navigate to `ldc_left_right/RESU_COUPLING/*/RIGHT/postprocessing/RESULTS_FLUID_DOMAIN.case` and click OK.
 
 - For LUMA file name, navigate to `ldc_left_right/RESU_COUPLING/*/LEFT/output_*/postprocessedoutput/luma_000.*.vtu` and click OK.
 
@@ -195,7 +195,7 @@ A visualisation of the fluid velocity magnitude from both codes can be created u
 
 - Select a Custom range for the colour map on the toolbar at the top from 0 to 1.
 
-- Select `RESULTS_FLUID_DOMAIN.case` and rename it as Code_Saturne.
+- Select `RESULTS_FLUID_DOMAIN.case` and rename it as Code\_Saturne.
 
 - Select the Code\_Saturne dataset and create a slice filter, again clicking Z Normal and Apply.
 
